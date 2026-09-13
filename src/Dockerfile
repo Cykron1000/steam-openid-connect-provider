@@ -15,8 +15,11 @@ RUN dotnet publish ./SteamOpenIdConnectProvider.csproj -c Release -o /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0
 
+# Security: upgrade OS packages before install (libssl3, gnutls CVE fixes)
 RUN apt-get update && \
-    apt-get update && apt-get install -y curl && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends curl && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 COPY --from=publish /app .
