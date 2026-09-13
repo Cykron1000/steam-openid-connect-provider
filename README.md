@@ -66,3 +66,8 @@ docker run -it \
 ## License
 
 [MIT](https://github.com/byo-software/steam-openid-connect-provider/blob/master/LICENSE)
+
+---
+
+Fork maintained by Cykron1000 for security rebuilds with patched base images (.NET runtime, Debian packages).
+Upstream: byo-software/steam-openid-connect-provider
